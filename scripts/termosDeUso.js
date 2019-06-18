@@ -1,4 +1,4 @@
-if(localStorage.getItem('aceitouTermos') === null) {
+if(!localStorage.getItem('aceitouTermos')) {
 
     const nome = prompt('Qual seu nome?')
     
