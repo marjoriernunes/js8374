@@ -1,23 +1,24 @@
-import aceitouSalvar from './pedeAceitouSalvar.js'
+import aceitouSalvar from '../storage/aceitouSalvar.js'
+import paginaInicial from '../storage/paginaInicial.js'
 
 if(aceitouSalvar === null || aceitouSalvar === true) {
-    let paginaInicial = localStorage.getItem('paginaDefinida')
+    let paginaInicialDefault = paginaInicial
     
-    if(!paginaInicial) {
-        paginaInicial = prompt("turu bom? Para qual site vamos @?")
+    if(!paginaInicialDefault) {
+        paginaInicialDefault = prompt("turu bom? Para qual site vamos @?")
     }
     
-    if(paginaInicial) {
+    if(paginaInicialDefault) {
         if(
-            paginaInicial.substring(0, 7) !== 'http://' &&
-            paginaInicial.substring(0, 8) !== 'https://'   
+            paginaInicialDefault.substring(0, 7) !== 'http://' &&
+            paginaInicialDefault.substring(0, 8) !== 'https://'   
         ) {
-            paginaInicial = 'http://' + paginaInicial
+            paginaInicialDefault = 'http://' + paginaInicialDefault
         }
         
-        $janelaPrincipal.src = paginaInicial
-        $inputEndereco.value = paginaInicial
-        localStorage.setItem('paginaDefinida', paginaInicial)
+        $janelaPrincipal.src = paginaInicialDefault
+        $inputEndereco.value = paginaInicialDefault
+        localStorage.setItem('paginaInicial', paginaInicialDefault)
     }
 }
 
