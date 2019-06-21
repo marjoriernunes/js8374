@@ -1,5 +1,5 @@
-import paginaInicial, { setPaginaInicial } from './storage/paginaInicial.js'
-import aceitouSalvar, { setAceitouSalvar } from './storage/aceitouSalvar.js'
+import * as storagePaginaInicial from './storage/paginaInicial.js'
+import * as storageAceitouSalvar from './storage/aceitouSalvar.js'
 
 $inputPaginaInicial.value = paginaInicial
 $inputPermissaoSalvar.checked = aceitouSalvar
@@ -7,6 +7,6 @@ $inputPermissaoSalvar.checked = aceitouSalvar
 $botaoSalvar.onclick = salvar
 
 function salvar() {
-    setPaginaInicial($inputPaginaInicial.value)
-    setAceitouSalvar($inputPermissaoSalvar.checked)
+    storagePaginaInicial.setPaginaInicial($inputPaginaInicial.value)
+    storageAceitouSalvar.setAceitouSalvar($inputPermissaoSalvar.checked)
 }

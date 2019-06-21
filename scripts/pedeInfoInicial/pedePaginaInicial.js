@@ -1,5 +1,5 @@
-import aceitouSalvar from '../storage/aceitouSalvar.js'
-import paginaInicial, { setPedePaginaInicial } from '../storage/paginaInicial.js'
+import { aceitouSalvar } from '../storage/aceitouSalvar.js'
+import { paginaInicial, setPedePaginaInicial } from '../storage/paginaInicial.js'
 
 if(aceitouSalvar === null || aceitouSalvar === true) {
     let paginaInicialDefault = paginaInicial
