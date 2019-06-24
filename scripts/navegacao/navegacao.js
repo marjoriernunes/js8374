@@ -5,15 +5,17 @@ import { formataEndereco } from '/scripts/endereco/formataEndereco.js'
 // Pegar pagina atual do localStorage
 const paginaAtual = sessionStorage.getItem('paginaAtual')
 
-//TODO isolar funcao carrega
-if (paginaAtual !== null) {
-    const enderecoCompleto = formataEndereco(paginaAtual)
+const paginaPraCarregar = paginaAtual !== null
+    ? paginaAtual
+    : storagePaginaInicial.paginaInicial
 
-    $janelaPrincipal.src = enderecoCompleto
-    $inputEndereco.value = enderecoCompleto
-} else {
-    const enderecoCompleto = formataEndereco(storagePaginaInicial.paginaInicial)
+const enderecoCompleto = formataEndereco(paginaPraCarregar)
 
-    $janelaPrincipal.src = enderecoCompleto
-    $inputEndereco.value = enderecoCompleto
+$janelaPrincipal.src = enderecoCompleto
+$inputEndereco.value = enderecoCompleto
+
+$janelaPrincipal.addEventListener('load', salvaPaginaAtual)
+
+function salvaPaginaAtual() {
+    sessionStorage.setItem('paginaAtual', $janelaPrincipal.contentWindow.location.href)
 }

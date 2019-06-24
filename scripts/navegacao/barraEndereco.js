@@ -1,7 +1,7 @@
-$inputEndereco.onfocus = exibeEnderecoCompleto
+$inputEndereco.addEventListener('focus', exibeEnderecoCompleto)
 
-$inputEndereco.onblur = exibeEnderecoResumido
-$janelaPrincipal.onload = exibeEnderecoResumido
+$inputEndereco.addEventListener('blur', exibeEnderecoResumido)
+$janelaPrincipal.addEventListener('load', exibeEnderecoResumido)
 
 function exibeEnderecoCompleto(){
     $inputEndereco.value = $janelaPrincipal.contentWindow.location.href
