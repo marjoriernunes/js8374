@@ -1,5 +1,6 @@
 import * as storagePaginaInicial from '/scripts/storage/paginaInicial.js'
 import { formataEndereco } from '/scripts/endereco/formataEndereco.js'
+import { carregar } from '/scripts/navegacao/carregar.js'
 
 //TODO criar módulo pra isso
 // Pegar pagina atual do localStorage
@@ -10,12 +11,11 @@ const paginaPraCarregar = paginaAtual !== null
     : storagePaginaInicial.paginaInicial
 
 const enderecoCompleto = formataEndereco(paginaPraCarregar)
+carregar(enderecoCompleto)
 
-$janelaPrincipal.src = enderecoCompleto
-$inputEndereco.value = enderecoCompleto
-
-$janelaPrincipal.addEventListener('load', salvaPaginaAtual)
-
-function salvaPaginaAtual() {
+$janelaPrincipal.addEventListener('load', function salvaPaginaAtual() {
     sessionStorage.setItem('paginaAtual', $janelaPrincipal.contentWindow.location.href)
-}
+})
+
+
+
