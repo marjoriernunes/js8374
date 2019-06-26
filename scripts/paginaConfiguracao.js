@@ -38,14 +38,21 @@ function salvar(){
 
 $botaoLimpar.addEventListener('click', function (){
     const listaChaves = Object.keys(localStorage)
+    const chavesPermanentes = [
+        'aceitouSalvar',
+        'aceitouTermos'
+    ]
 
-    for(let i = 0; i < listaChaves.length; i++) {
-        const chave = listaChaves[i];
-        localStorage.removeItem(chave)
+    const listaChavesLocalStorage = Object.keys(localStorage)
+    for(let chave of listaChavesLocalStorage) {
+        const isChavePermanente = chavesPermanentes.includes(chave)
+        
+        if(!isChavePermanente) {
+            localStorage.removeItem(chave)
+        }
     }
 
     const listaChavesSession = Object.keys(sessionStorage)
-
     for(let chave of listaChavesSession) {
         sessionStorage.removeItem(chave)
     }
