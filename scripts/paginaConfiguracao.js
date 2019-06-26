@@ -35,3 +35,18 @@ function salvar(){
     
     storagePaginaInicial.setPaginaInicial(enderecoCompleto)
 }
+
+$botaoLimpar.addEventListener('click', function (){
+    const listaChaves = Object.keys(localStorage)
+
+    for(let i = 0; i < listaChaves.length; i++) {
+        const chave = listaChaves[i];
+        localStorage.removeItem(chave)
+    }
+
+    const listaChavesSession = Object.keys(sessionStorage)
+
+    for(let chave of listaChavesSession) {
+        sessionStorage.removeItem(chave)
+    }
+})

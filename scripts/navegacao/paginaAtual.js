@@ -1,4 +1,5 @@
 import * as storagePaginaInicial from '/scripts/storage/paginaInicial.js'
+import * as historico from '/scripts/navegacao/historico.js'
 import { formataEndereco } from '/scripts/endereco/formataEndereco.js'
 import { carregar } from '/scripts/navegacao/carregar.js'
 
@@ -14,29 +15,26 @@ carregar(enderecoCompleto)
 $janelaPrincipal.addEventListener('load', function salvaPaginaAtual() {
     const endereco = $janelaPrincipal.contentWindow.location.href
     sessionStorage.setItem('paginaAtual', endereco)
-    listaSites.push(endereco)
-    posicao++
 })
 
-let listaSites = []
-
-let posicao = -1
+$janelaPrincipal.addEventListener('load', function salvaPaginaAtual() {
+    const endereco = $janelaPrincipal.contentWindow.location.href
+    historico.adicionar(endereco)
+})
 
 $botaoVoltar.addEventListener('click', function(){
-    if(listaSites.length !== 1) {
-        posicao--
-        carregar(
-            listaSites[posicao]
-        )  
+    const enderecoVolta = historico.voltar()
+    if(enderecoVolta !== undefined) {
+        carregar(enderecoVolta)
     }
+    //$bntVoltar.src="imagem opaca"
 })
+
 $botaoAvancar.addEventListener('click', function() {
-    if(listaSites.length !== 1) {
-        posicao++
-        carregar(
-            listaSites[posicao]
-        )
-    }
+    const enderecoAvanca = historico.avancar()
+    if(enderecoAvanca !== undefined){
+        carregar(enderecoAvanca)
+    } 
 })
 
 
