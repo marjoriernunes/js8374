@@ -6,8 +6,8 @@ export function adicionar(endereco){
         listaSites.splice(posicao + 1)
         listaSites.push(endereco)
         sessionStorage.setItem('historico', JSON.stringify(listaSites))
-        sessionStorage.setItem('posicaoHistorico', posicao)
         posicao++
+        sessionStorage.setItem('posicaoHistorico', posicao)
     }
 }
 
@@ -24,6 +24,7 @@ export function avancar(){
     const isUltimaPosicao = posicao === listaSites.length -1
     if(listaSites.length !== 1 && !isUltimaPosicao) {
         posicao++
+        sessionStorage.setItem('posicaoHistorico', posicao)
         return listaSites[posicao]
     }
 }

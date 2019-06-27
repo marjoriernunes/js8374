@@ -56,4 +56,6 @@ $botaoLimpar.addEventListener('click', function (){
     for(let chave of listaChavesSession) {
         sessionStorage.removeItem(chave)
     }
+
+    window.location.reload();
 })
