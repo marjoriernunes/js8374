@@ -3,4 +3,4 @@ import { carregar } from '/scripts/navegacao/carregar.js'
 
 $botaoPaginaInicial.addEventListener('click', function voltaParaHome() {
     carregar(paginaInicial)
-})
+}) 

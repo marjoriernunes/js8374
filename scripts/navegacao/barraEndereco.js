@@ -23,8 +23,7 @@ function exibeEnderecoResumido() {
 $inputEndereco.addEventListener('keyup', function(evento) {
     const apertouEnter = evento.key === 'Enter'
     if(apertouEnter) {
-        const enderecoCompleto = formataEndereco($inputEndereco.value)
-        endereco = Endereco(enderecoCompleto)
+        endereco = Endereco($inputEndereco.value)
         carregar(enderecoCompleto)
     }
 })
