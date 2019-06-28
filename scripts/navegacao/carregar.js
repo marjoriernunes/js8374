@@ -4,12 +4,12 @@ export function carregar(value) {
     let endereco 
 
     if(typeof value === 'string') {
-        endereco = Endereco(value)
+        endereco = new Endereco(value)
     }else if(value instanceof Endereco) {
         endereco = value
     }else{
         throw new Error(`
-Não foi possível carregar o seguinte endereço:
+Você passou um endereço que não é do tipo string e nem Endereco:
     Valor: ${JSON.stringify(value)}
     Tipo: ${typeof value}
         `.trim())

@@ -13,14 +13,12 @@ function Endereco(endereco) {
             enderecoCompleto = paginaLocal
             enderecoResumido = paginaLocal
         }else{
-            enderecoCompleto = url
+            enderecoCompleto = url.toString()
             enderecoResumido = url.hostname
         }
     }
-    return {
-        urlCompleta: enderecoCompleto,
-        urlResumida: enderecoResumido
-    }
+    this.urlCompleta = enderecoCompleto
+    this.urlResumida = enderecoResumido
 }
 
 export { Endereco }
