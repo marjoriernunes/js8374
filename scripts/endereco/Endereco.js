@@ -1,3 +1,5 @@
+import { CakeError } from '/scripts/erros/CakeError.js'
+
 function Endereco(endereco) {
 
     if(this === undefined || this !== undefined && !(this instanceof Endereco)) {
@@ -10,8 +12,22 @@ function Endereco(endereco) {
         enderecoCompleto = 'blank'
         enderecoResumido = 'blank'
     }else{
-        const url = new URL(endereco)
-        
+        if (
+            endereco.substring(0, 7) !== 'http://' &&
+            endereco.substring(0,8) !== 'https://'
+        ) {
+            // Assignement Atribuição
+            endereco = 'http://' + endereco
+        }
+        let url
+        try{
+            url = new URL(endereco)
+        } catch(error){
+            const erroCostumizado = new CakeError(endereco)
+            throw erroCostumizado
+        }
+
+
         if(url.hostname === 'localhost') {
             const paginaLocal = url.pathname.replace("/", "")
             enderecoCompleto = paginaLocal

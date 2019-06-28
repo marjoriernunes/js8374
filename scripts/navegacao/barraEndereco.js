@@ -1,6 +1,6 @@
 import { carregar } from '/scripts/navegacao/carregar.js'
-import { formataEndereco } from '/scripts/endereco/formataEndereco.js';
 import { Endereco } from '/scripts/endereco/Endereco.js';
+import { CakeError } from '/scripts/erros/CakeError.js'
 
 let endereco
 
@@ -23,7 +23,16 @@ function exibeEnderecoResumido() {
 $inputEndereco.addEventListener('keyup', function(evento) {
     const apertouEnter = evento.key === 'Enter'
     if(apertouEnter) {
-        endereco = new Endereco($inputEndereco.value)
+        try{
+            endereco = new Endereco($inputEndereco.value)
+        }catch (error) {
+            if(error instanceof CakeError){
+                alert(error.message)
+            }else{
+                throw error
+            }
+        }
+
         carregar(endereco)
     }
 })
