@@ -1,4 +1,8 @@
 function Endereco(endereco) {
+
+    if(this === undefined || this !== undefined && !(this instanceof Endereco)) {
+        return new Endereco(endereco)
+    }
     let enderecoCompleto 
     let enderecoResumido
     
