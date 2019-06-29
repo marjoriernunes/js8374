@@ -38,7 +38,12 @@ function Endereco(endereco) {
         }
     }
     this.urlCompleta = enderecoCompleto
-    this.urlResumida = enderecoResumido
+    this.urlResumida = enderecoResumido   
 }
 
+Endereco.prototype = {
+    toString: function(){
+        return this.urlCompleta
+    }
+}
 export { Endereco }
