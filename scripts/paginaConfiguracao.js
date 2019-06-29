@@ -1,6 +1,7 @@
 import * as storagePaginaInicial from '/scripts/storage/paginaInicial.js'
 import * as storageAceitouSalvar  from '/scripts/storage/aceitouSalvar.js'
 import { Endereco } from '/scripts/endereco/Endereco.js'
+import { CakeError } from '/scripts/erros/CakeError.js';
 
 $inputPaginaInicial.value = storagePaginaInicial.paginaInicial
 $inputPermitiuSalvar.checked = storageAceitouSalvar.aceitouSalvar
@@ -15,10 +16,11 @@ function salvar(){
     
     funcaoEscolhida()
 
-    const enderecoCompleto = new Endereco($inputPaginaInicial.value)
-    $inputPaginaInicial.value = enderecoCompleto
-    
-    storagePaginaInicial.setPaginaInicial(enderecoCompleto)
+        const enderecoCompleto = new Endereco($inputPaginaInicial.value)
+        $inputPaginaInicial.value = enderecoCompleto
+        
+        storagePaginaInicial.setPaginaInicial(enderecoCompleto)
+
 }
 
 $botaoLimpar.addEventListener('click', function (){
